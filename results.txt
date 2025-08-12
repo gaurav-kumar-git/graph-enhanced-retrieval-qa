@@ -1,0 +1,24 @@
+| Method           | Average F1 | Average MRR |
+|------------------|------------|-------------|
+| BM25             |0.7501      |0.4633       |
+| DPR(bge-m3)      |0.9804      |0.7307       |
+| Vanilla GNN      |0.8405      |0.6637       |
+| GNN_Experimental |            |             |
+
+
+Evaluating {'num_layers': 2, 'aggregation': 'mean'}: 100%|█████████████████████████████████████████| 12576/12576 [30:21<00:00,  6.91it/s]
+Result for {'num_layers': 2, 'aggregation': 'mean'}: MRR=0.8399, F1=0.6562
+
+
+Evaluating {'num_layers': 2, 'aggregation': 'max'}: 100%|██████████████████████████████████████████| 12576/12576 [30:18<00:00,  6.91it/s]
+Result for {'num_layers': 2, 'aggregation': 'max'}: MRR=0.8524, F1=0.6818
+
+Evaluating {'num_layers': 2, 'aggregation': 'sum'}: 100%|██████████████████████████████████████████| 12576/12576 [30:18<00:00,  6.92it/s]
+Result for {'num_layers': 2, 'aggregation': 'sum'}: MRR=0.8261, F1=0.6454
+
+Epoch 5/5 - Loss: 0.0986
+Evaluating {'num_layers': 1, 'aggregation': 'mean'}: 100%|██████████████████████████████████████████| 12576/12576 [41:50<00:00,  5.01it/s]
+Result for {'num_layers': 1, 'aggregation': 'mean'}: MRR=0.9528, F1=0.7735
+
+Evaluating {'num_layers': 3, 'aggregation': 'mean'}: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12576/12576 [30:35<00:00,  6.85it/s]
+Result for {'num_layers': 3, 'aggregation': 'mean'}: MRR=0.7422, F1=0.5789

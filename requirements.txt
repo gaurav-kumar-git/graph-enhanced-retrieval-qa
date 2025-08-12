@@ -1,0 +1,9 @@
+torch
+transformers
+sentence-transformers
+torch-geometric  # For the GNN
+rank_bm25        # For the BM25 baseline
+scikit-learn
+pandas
+tqdm
+notebook
