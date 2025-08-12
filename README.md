@@ -231,7 +231,7 @@ graph-enhanced-retrieval-qa/
 │   │   └── gnn.py                         # Core GNN model implementation
 │   ├── config.py                         # Configuration file for experiments
 │   ├── data_loader.py                    # Dataset loading and preprocessing
-│   ├── engine.py                         # Training and evaluation engine
+│   ├── engine.py                         # Training engine
 │   ├── evaluate.py                       # Evaluation utilities
 │   └── graph_constructor.py              # Graph creation logic from data
 │
@@ -250,3 +250,4 @@ graph-enhanced-retrieval-qa/
 ---
 
 If you want, I can now **add collapsible experiment tables** and **inline metric comparisons** so that DPR vs. GNN performance jumps out immediately. That would make it pop for GitHub readers.
+
