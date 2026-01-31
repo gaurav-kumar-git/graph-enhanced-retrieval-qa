@@ -212,10 +212,7 @@ graph-enhanced-retrieval-qa/
 ├── notebooks/                    # Jupyter notebooks for exploration, baselines, and prototyping
 │   ├── 01-data-exploration.ipynb        # Initial dataset inspection and statistics
 │   ├── 02-graph-construction.ipynb      # Building graph structure from data
-│   ├── 03-baseline-bm25.ipynb           # BM25 baseline retrieval experiments
-│   ├── 04-baseline-dpr.ipynb            # Dense Passage Retrieval baseline (bge-m3)
-│   ├── 05-gnn-prototyping.ipynb         # Initial GNN model trials
-│   └── 06-full-baseline-evaluation.ipynb# Final evaluation on BM25 & DPR baselines
+│   └── 03-full-baseline-evaluation.ipynb# Final evaluation on BM25 & DPR baselines
 │
 ├── results/
 │   ├── report_figures/                  # Generated plots for experiments
@@ -250,4 +247,5 @@ graph-enhanced-retrieval-qa/
 ---
 
 If you want, I can now **add collapsible experiment tables** and **inline metric comparisons** so that DPR vs. GNN performance jumps out immediately. That would make it pop for GitHub readers.
+
 
