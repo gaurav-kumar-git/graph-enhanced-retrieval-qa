@@ -3,31 +3,25 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-# ---- Fixed baseline numbers from your table ----
-baseline_data = [
+baseline_data = [ # this is from 03-full-baseline-evaluation notebook
     {"label": "BM25", "mrr": 0.4633, "f1": 0.7501},
     {"label": "DPR (bge-m3)", "mrr": 0.7307, "f1": 0.9804},
     {"label": "Vanilla GNN", "mrr": 0.6637, "f1": 0.8405},
 ]
 
-# ---- Load JSON results for experimental GNN configs ----
 with open("/home/sslab/24m0786/graph-enhanced-retrieval-qa/results/experiment_results.json", "r") as f:
     results = json.load(f)
 
-# Convert to DataFrame and flatten config
 df = pd.DataFrame(results)
 config_df = pd.json_normalize(df['config'])
 df = df.drop(columns=['config']).join(config_df)
 
-# Create labels
 df['label'] = df.apply(lambda row: f"GNN {row['num_layers']}-layer ({row['aggregation']})", axis=1)
 
-# Prepare data for plotting
 gnn_variants = df[['label', 'mrr', 'f1']].to_dict(orient="records")
 plot_data = baseline_data + gnn_variants
 plot_df = pd.DataFrame(plot_data)
 
-# ---- Plot ----
 x = np.arange(len(plot_df))
 width = 0.35
 
@@ -43,7 +37,6 @@ ax.set_xticklabels(plot_df['label'], rotation=30, ha="right")
 ax.set_ylim(0, 1.05)
 ax.legend()
 
-# Add numeric labels
 for bars in [bars1, bars2]:
     for bar in bars:
         height = bar.get_height()

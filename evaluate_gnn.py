@@ -16,20 +16,17 @@ def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Using device: {device}")
 
-    # --- 1. Load Models ---
     sentence_model = SentenceTransformer(MODEL_PATH_BGE, device=device)
     embedding_dim = sentence_model.get_sentence_embedding_dimension()
     
     gnn_model = GNNRanker(embedding_dim, 512, embedding_dim).to(device)
     gnn_model.load_state_dict(torch.load(SAVED_GNN_MODEL_PATH))
-    gnn_model.eval() # Set the model to evaluation mode
+    gnn_model.eval() 
     
-    # --- 2. Load Data ---
     dev_dataset = load_dataset(DEV_DATA_PATH)
     
-    # --- 3. Evaluation Loop ---
     gnn_mrrs, gnn_f1s = [], []
-    with torch.no_grad(): # Disable gradient calculations for inference
+    with torch.no_grad(): 
         for sample in tqdm(dev_dataset, desc="Evaluating GNN"):
             processed = process_sample(sample)
             if not processed['passages']:
@@ -54,7 +51,6 @@ def main():
             gnn_mrrs.append(calculate_mrr(ranked_titles, processed['ground_truth_titles']))
             gnn_f1s.append(calculate_f1(ranked_titles, processed['ground_truth_titles']))
 
-    # --- 4. Print Results ---
     print("\n--- GNN Model Performance ---")
     print(f"  - Average MRR: {np.mean(gnn_mrrs):.4f}")
     print(f"  - Average F1:  {np.mean(gnn_f1s):.4f}")

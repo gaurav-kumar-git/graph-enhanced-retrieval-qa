@@ -37,9 +37,6 @@ def main():
         print("Please run 'preprocess.py' first.")
         return
     
-    # --- THIS IS THE FIX ---
-    # We explicitly set weights_only=False to allow loading of complex Python objects
-    # like the torch_geometric.data.Data class.
     train_data_list = [torch.load(f, weights_only=False) for f in tqdm(graph_files, desc="Loading Graphs")]
     print(f"Loaded {len(train_data_list)} graphs.")
 

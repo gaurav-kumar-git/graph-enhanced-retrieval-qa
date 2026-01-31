@@ -1,4 +1,3 @@
-# In run_experiments.py (Corrected Version)
 import torch
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
@@ -8,23 +7,19 @@ import time
 import os
 import glob
 
-# Import your custom modules
 from src.models.gnn_experimental import GNNExperimental
 from src.engine import train_one_epoch
 from src.data_loader import load_dataset, process_sample
 from src.graph_constructor import construct_graph
 from src.evaluate import calculate_mrr, calculate_f1
 
-# --- CONFIGURATION ---
 EXPERIMENT_EPOCHS = 5
 LEARNING_RATE = 1e-4
 MODEL_PATH_BGE = '/home/sslab/24m0786/.cache/huggingface/hub/models--BAAI--bge-m3/snapshots/5617a9f61b028005a4858fdac845db406aefb181'
-# --- UPDATED PATH to be a directory ---
 PROCESSED_TRAIN_DATA_DIR = 'data/processed/train_graphs/'
 DEV_DATA_PATH = 'data/raw/dev.json'
 RESULTS_FILE = 'results/experiment_results.json'
 
-# run_single_experiment function remains the same as before...
 def run_single_experiment(config, sentence_model, train_data, dev_data, device):
     print(f"\n{'='*20}\nRunning Experiment: {config}\n{'='*20}")
     embedding_dim = sentence_model.get_sentence_embedding_dimension()
@@ -75,7 +70,6 @@ def main():
         {'num_layers': 3, 'aggregation': 'mean'}, {'num_layers': 4, 'aggregation': 'mean'},
     ]
 
-    # --- CORRECTED DATA LOADING ---
     sentence_model = SentenceTransformer(MODEL_PATH_BGE, device=device)
     
     print(f"Loading pre-processed graph data from directory: '{PROCESSED_TRAIN_DATA_DIR}'...")

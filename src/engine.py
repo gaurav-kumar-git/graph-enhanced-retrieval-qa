@@ -11,13 +11,11 @@ def train_one_epoch(gnn_model, sentence_model, data_list, optimizer, loss_fn, de
     for data in tqdm(data_list, desc="Training Epoch"):
         optimizer.zero_grad()
 
-        # Unpack data and move to the correct device
         x = data.x.to(device)
         edge_index = data.edge_index.to(device)
         question = data.question
         positive_indices = data.positive_node_indices.to(device)
         
-        # We need at least one positive and one negative sample to compute triplet loss
         if len(positive_indices) == 0 or len(positive_indices) == len(x):
             continue
 

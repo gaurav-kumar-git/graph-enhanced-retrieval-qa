@@ -19,9 +19,7 @@ def _process_passages_to_map(context: List[list]) -> Dict[str, str]:
     """
     passages_map = {}
     for title, sentences in context:
-        # Check if sentences list is not empty
         if sentences:
-            # Join sentences and store in the map with the title as the key
             passages_map[title] = " ".join(sentences)
     return passages_map
 

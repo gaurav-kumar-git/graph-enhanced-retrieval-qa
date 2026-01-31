@@ -20,13 +20,11 @@ def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Using device: {device}")
     
-    # Load the sentence transformer model
     sentence_model = SentenceTransformer(MODEL_PATH_BGE, device=device)
 
     print(f"Loading raw data from {RAW_DATA_PATH}...")
     raw_train_data = load_dataset(RAW_DATA_PATH)
     
-    # Ensure the output directory exists
     os.makedirs(PROCESSED_GRAPHS_DIR, exist_ok=True)
     
     print("Starting incremental graph construction...")
@@ -47,7 +45,7 @@ def main():
         if os.path.exists(graph_filename):
             continue # Skip to the next sample
 
-        # --- If the graph doesn't exist, process the sample ---
+        # If the graph doesn't exist, process the sample
         processed = process_sample(sample)
         
         if not processed['passages']:
