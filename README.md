@@ -243,9 +243,3 @@ graph-enhanced-retrieval-qa/
 └── train.py                              # Model training entry point
 
 ```
-
----
-
-If you want, I can now **add collapsible experiment tables** and **inline metric comparisons** so that DPR vs. GNN performance jumps out immediately. That would make it pop for GitHub readers.
-
-
